@@ -23,24 +23,27 @@ namespace MultiShop.Catalog.Services.CategoryServices
             await _categoryCollection.InsertOneAsync(value);
         }
 
-        public Task DeleteCategoryAsync(string id)
+        public async Task DeleteCategoryAsync(string id)
         {
-            throw new NotImplementedException();
+            await _categoryCollection.DeleteOneAsync(x => x.CategoryId == id);
         }
 
-        public Task<GetByIdCategoryDto> GetByIdCategoryAsync(string id)
+        public async Task<GetByIdCategoryDto> GetByIdCategoryAsync(string id)
         {
-            throw new NotImplementedException();
+            var values = await _categoryCollection.Find<Category>(x => x.CategoryId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdCategoryDto>(values);
         }
 
-        public Task<List<ResultCategoryDto>> GettAllCategoryAsync()
+        public async Task<List<ResultCategoryDto>> GettAllCategoryAsync()
         {
-            throw new NotImplementedException();
+            var values = await _categoryCollection.Find(x => true).ToListAsync();
+            return _mapper.Map<List<ResultCategoryDto>>(values);
         }
 
-        public Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)
+        public async Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)
         {
-            throw new NotImplementedException();
+            var values = _mapper.Map<Category>(updateCategoryDto);
+            await _categoryCollection.FindOneAndReplaceAsync(x => x.CategoryId == updateCategoryDto.CategoryID, values);
         }
     }
 }
