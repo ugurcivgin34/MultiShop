@@ -6,14 +6,8 @@ namespace MultiShop.Catalog.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsController(IProductService _productService) : ControllerBase
     {
-        private readonly IProductService _productService;
-        public ProductsController(IProductService ProductService)
-        {
-            _productService = ProductService;
-        }
-
         [HttpGet]
         public async Task<IActionResult> ProductList()
         {

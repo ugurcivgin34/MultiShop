@@ -17,10 +17,11 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 
-builder.Services.AddScoped<IDatabaseSettings>(sp =>
+builder.Services.AddScoped(sp =>
 {
-    return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
+    return (IDatabaseSettings)sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
 });
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
