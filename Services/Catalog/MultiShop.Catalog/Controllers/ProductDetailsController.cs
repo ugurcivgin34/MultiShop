@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.ProductDetailDtos;
 using MultiShop.Catalog.Services.ProductImageServices;
 
@@ -9,7 +8,6 @@ namespace MultiShop.Catalog.Controllers
     [ApiController]
     public class ProductDetailsController(IProductDetailService _productDetailService) : ControllerBase
     {
-
         [HttpGet]
         public async Task<IActionResult> ProductDetailList()
         {
@@ -23,6 +21,7 @@ namespace MultiShop.Catalog.Controllers
             var values = await _productDetailService.GetByIdProductDetailAsync(id);
             return Ok(values);
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateProductDetail(CreateProductDetailDto createProductDetailDto)
         {

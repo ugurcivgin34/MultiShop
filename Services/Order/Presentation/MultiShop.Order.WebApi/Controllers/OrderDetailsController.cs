@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.Order.Application.Features.CQRS.Commands.OrderDetailCommands;
 using MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using MultiShop.Order.Application.Features.CQRS.Queries.OrderDetailQueries;
 
 namespace MultiShop.Order.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderDetailsController : ControllerBase
@@ -23,6 +25,7 @@ namespace MultiShop.Order.WebApi.Controllers
             _removeOrderDetailCommandHandler = removeOrderDetailCommandHandler;
             _updateOrderDetailCommandHandler = updateOrderDetailCommandHandler;
         }
+
         [HttpGet]
         public async Task<IActionResult> OrderDetailList()
         {

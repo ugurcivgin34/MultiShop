@@ -10,6 +10,7 @@ namespace MultiShop.Catalog.Services.CategoryServices
     {
         private readonly IMongoCollection<Category> _categoryCollection;
         private readonly IMapper _mapper;
+
         public CategoryService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString);
@@ -17,6 +18,7 @@ namespace MultiShop.Catalog.Services.CategoryServices
             _categoryCollection = database.GetCollection<Category>(_databaseSettings.CategoryCollectionName);
             _mapper = mapper;
         }
+
         public async Task CreateCategoryAsync(CreateCategoryDto createCategoryDto)
         {
             var value = _mapper.Map<Category>(createCategoryDto);

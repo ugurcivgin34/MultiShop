@@ -10,7 +10,8 @@ namespace MultiShop.IdentityServer
         {
             new ApiResource("ResourceCatalog"){Scopes={"CatalogFullPermission","CatalogReadPermission"}},
             new ApiResource("ResourceDiscount"){Scopes={"DiscountFullPermission"} },
-            new ApiResource("ResourceOrder"){Scopes={"OrderFullPermisson"}}
+            new ApiResource("ResourceOrder"){Scopes={"OrderFullPermisson"}},
+            new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[] {
@@ -24,7 +25,8 @@ namespace MultiShop.IdentityServer
             new ApiScope("CatalogFullPermission","Full authority for catalog operations"),
             new ApiScope("CatalogReadPermission","Reading authority for catalog operations"),
             new ApiScope("DiscountFullPermission","Full authority for discount operations"),
-            new ApiScope("OrderFullPermisson","Full authority for order operations")
+            new ApiScope("OrderFullPermisson","Full authority for order operations"),
+            new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
         public static IEnumerable<Client> Clients => new Client[]
@@ -36,7 +38,7 @@ namespace MultiShop.IdentityServer
                 ClientName="Multi Shop Visitor User",
                 AllowedGrantTypes=GrantTypes.ClientCredentials, //Bu client tipi ile sadece client bilgileri ile token alınabilir.
                 ClientSecrets={new Secret("multishopsecret".Sha256())},
-                AllowedScopes={"CatalogReadPermission","CatalogFullPermission"}
+                AllowedScopes={"CatalogReadPermission", "CatalogFullPermission" }
             },
 
             //Manager
@@ -57,9 +59,9 @@ namespace MultiShop.IdentityServer
                 AllowedGrantTypes=GrantTypes.ClientCredentials,
                 ClientSecrets={new Secret("multishopsecret".Sha256()) },
                 AllowedScopes={ "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermisson" ,
-                IdentityServerConstants.LocalApi.ScopeName, 
+                IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
-                IdentityServerConstants.StandardScopes.OpenId, 
+                IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Profile
                 },
                 AccessTokenLifetime=600

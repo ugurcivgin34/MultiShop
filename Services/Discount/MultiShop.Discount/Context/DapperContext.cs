@@ -15,11 +15,14 @@ namespace MultiShop.Discount.Context
             _configuration = configuration;
             _connectionString = _configuration.GetConnectionString("DefaultConnection");
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_connectionString);
         }
+
         public DbSet<Coupon> Coupons { get; set; }
+
         public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
     }
 }

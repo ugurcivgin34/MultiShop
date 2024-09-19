@@ -9,6 +9,7 @@ namespace MultiShop.Order.Persistence.Context
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;initial Catalog=MultiShopOrderDb;");
         }
+
         public DbSet<Address> Addresses { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Ordering> Orderings { get; set; }

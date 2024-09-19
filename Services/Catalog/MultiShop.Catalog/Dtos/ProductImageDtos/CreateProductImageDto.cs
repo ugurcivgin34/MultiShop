@@ -7,7 +7,4 @@
         public string Image3 { get; set; }
         public string ProductId { get; set; }
     }
-  
-   
-   
 }

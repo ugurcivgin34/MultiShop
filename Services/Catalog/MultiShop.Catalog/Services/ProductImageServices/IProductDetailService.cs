@@ -5,9 +5,13 @@ namespace MultiShop.Catalog.Services.ProductImageServices
     public interface IProductDetailService
     {
         Task<List<ResultProductDetailDto>> GettAllProductDetailAsync();
+
         Task CreateProductDetailAsync(CreateProductDetailDto createProductDetailDto);
+
         Task UpdateProductDetailAsync(UpdateProductDetailDto updateProductDetailDto);
+
         Task DeleteProductDetailAsync(string id);
+
         Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id);
     }
 }

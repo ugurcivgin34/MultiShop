@@ -9,8 +9,4 @@
         public decimal ProductTotalPrice { get; set; }
         public int OrderingId { get; set; }
     }
-
-   
-
-   
 }
