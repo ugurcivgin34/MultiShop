@@ -8,7 +8,7 @@ using static IdentityServer4.IdentityServerConstants;
 
 namespace MultiShop.IdentityServer.Controllers
 {
-    [Authorize(LocalApi.PolicyName)] //tokeni olan kullanıcılar erişebilir
+    //[Authorize(LocalApi.PolicyName)] //tokeni olan kullanıcılar erişebilir
     [Route("api/[controller]")]
     [ApiController]
     public class RegistersController : ControllerBase

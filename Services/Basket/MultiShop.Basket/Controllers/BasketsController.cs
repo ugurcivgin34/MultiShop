@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.Basket.Dtos;
 using MultiShop.Basket.LoginServices;
 using MultiShop.Basket.Services;
@@ -19,6 +18,10 @@ namespace MultiShop.Basket.Controllers
             _loginService = loginService;
         }
 
+        /// <summary>
+        /// Sepet detaylarını getirir.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetMyBasketDetail()
         {
@@ -26,7 +29,11 @@ namespace MultiShop.Basket.Controllers
             var values = await _basketService.GetBasket(_loginService.GetUserId);
             return Ok(values);
         }
-
+        /// <summary>
+        /// Sepetteki değişiklikleri kaydeder.
+        /// </summary>
+        /// <param name="basketTotalDto"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> SaveMyBasket(BasketTotalDto basketTotalDto)
         {
@@ -35,6 +42,10 @@ namespace MultiShop.Basket.Controllers
             return Ok("Sepetteki değişiklikler kaydedildi.");
         }
 
+        /// <summary>
+        /// Sepeti siler.
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete]
         public async Task<IActionResult> DeleteBasket()
         {

@@ -5,12 +5,10 @@ using Microsoft.Extensions.Options;
 using MultiShop.Basket.LoginServices;
 using MultiShop.Basket.Services;
 using MultiShop.Basket.Settings;
-using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build(); //Authorize" attribute'ü ile yetkilendirme yapýlýr.
-JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub"); //Normalde http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier olarak gelen sub claim'ini temizler.
+var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();//Tüm controllerlara yetkilendirme eklenir.
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
