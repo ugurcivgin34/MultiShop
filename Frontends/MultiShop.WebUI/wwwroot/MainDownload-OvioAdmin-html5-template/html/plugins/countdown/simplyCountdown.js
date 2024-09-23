@@ -112,31 +112,31 @@
      */
     simplyCountdown = function (elt, args) {
         var parameters = extend({
-                year: 2016,
-                month: 6,
-                day: 28,
-                hours: 0,
-                minutes: 0,
-                seconds: 0,
-                words: {
-                    days: 'day',
-                    hours: 'hour',
-                    minutes: 'minute',
-                    seconds: 'second',
-                    pluralLetter: 's'
-                },
-                plural: true,
-                inline: false,
-                enableUtc: true,
-                onEnd: function () {
-                    return;
-                },
-                refresh: 1000,
-                inlineClass: 'simply-countdown-inline',
-                sectionClass: 'simply-section',
-                amountClass: 'simply-amount',
-                wordClass: 'simply-word'
-            }, args),
+            year: 2016,
+            month: 6,
+            day: 28,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            words: {
+                days: 'day',
+                hours: 'hour',
+                minutes: 'minute',
+                seconds: 'second',
+                pluralLetter: 's'
+            },
+            plural: true,
+            inline: false,
+            enableUtc: true,
+            onEnd: function () {
+                return;
+            },
+            refresh: 1000,
+            inlineClass: 'simply-countdown-inline',
+            sectionClass: 'simply-section',
+            amountClass: 'simply-amount',
+            wordClass: 'simply-word'
+        }, args),
             interval,
             targetDate,
             targetTmpDate,
@@ -185,7 +185,6 @@
                     nowUtc = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
                         now.getHours(), now.getMinutes(), now.getSeconds());
                     secondsLeft = (targetDate - nowUtc.getTime()) / 1000;
-
                 } else {
                     secondsLeft = (targetDate - now.getTime()) / 1000;
                 }
@@ -224,7 +223,6 @@
                     secondWord = seconds > 1
                         ? parameters.words.seconds + parameters.words.pluralLetter
                         : parameters.words.seconds;
-
                 } else {
                     dayWord = parameters.words.days;
                     hourWord = parameters.words.hours;
@@ -239,7 +237,6 @@
                         hours + ' ' + hourWord + ', ' +
                         minutes + ' ' + minuteWord + ', ' +
                         seconds + ' ' + secondWord + '.';
-
                 } else {
                     fullCountDown.days.amount.textContent = days;
                     fullCountDown.days.word.textContent = dayWord;

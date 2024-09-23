@@ -1,7 +1,6 @@
-
 /**
 * Metis - Bootstrap-Admin-Template v2.2.2
-* Author : Osman Nuri Okumus 
+* Author : Osman Nuri Okumus
 * Copyright 2014
 * Licensed under MIT
 */
@@ -15,8 +14,7 @@ var dif = endDate.getTime() - startDate.getTime();
 var difToSecond = dif / 1000;
 var defaultPercent = 0;
 
-
-$(function() {
+$(function () {
     $('#counter').countdown({
         until: endDate,
         layout: '<div></div>',
@@ -28,7 +26,6 @@ $(function() {
 });
 
 function updateBar(periods) {
-
     fillSecondBar(periods[6]);
     fillMinuteBar(periods[5]);
     fillHourBar(periods[4]);
@@ -68,7 +65,3 @@ function fillTotalbar(percent) {
 
     $('#total-bar').css('width', defaultPercent + '%').html(currentPercent + '%');
 }
-
-
-
-

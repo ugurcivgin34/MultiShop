@@ -23,7 +23,6 @@
         factory(jQuery, Raphael, jQuery.fn.mousewheel);
     }
 }(function ($, Raphael, mousewheel, undefined) {
-
     "use strict";
 
     // The plugin name (used on several places)
@@ -118,7 +117,6 @@
      * Each mapael object inherits their properties and methods from this prototype
      */
     Mapael.prototype = {
-
         /*
          * Version number
          */
@@ -190,7 +188,7 @@
                     (self.options.areas[id] ? self.options.areas[id] : {}),
                     self.options.legend.area
                 );
-                self.areas[id] = {"mapElem": self.paper.path(self.mapConf.elems[id]).attr(elemOptions.attrs)};
+                self.areas[id] = { "mapElem": self.paper.path(self.mapConf.elems[id]).attr(elemOptions.attrs) };
             });
 
             // Hook that allows to add custom processing on the map
@@ -345,7 +343,6 @@
          * @return new options object
          */
         extendDefaultOptions: function (options) {
-
             // Extend default options with user options
             options = $.extend(true, {}, Mapael.prototype.defaultOptions, options);
 
@@ -371,7 +368,7 @@
             var textPosition = {};
 
             // Assign value attribute to element
-            if (elemOptions.value !== undefined){
+            if (elemOptions.value !== undefined) {
                 elem.value = elemOptions.value;
             }
 
@@ -445,13 +442,13 @@
             var previousY = 0;
             var fnZoomButtons = {
                 "reset": function () {
-                    self.$container.trigger("zoom", {"level": 0});
+                    self.$container.trigger("zoom", { "level": 0 });
                 },
                 "in": function () {
-                    self.$container.trigger("zoom", {"level": "+1"});
+                    self.$container.trigger("zoom", { "level": "+1" });
                 },
                 "out": function () {
-                    self.$container.trigger("zoom", {"level": -1});
+                    self.$container.trigger("zoom", { "level": -1 });
                 }
             };
 
@@ -463,7 +460,7 @@
             });
 
             // init zoom buttons
-            $.each(zoomOptions.buttons, function(type, opt) {
+            $.each(zoomOptions.buttons, function (type, opt) {
                 if (fnZoomButtons[type] === undefined) throw new Error("Unknown zoom button '" + type + "'");
                 // Create div with classes, contents and title (for tooltip)
                 var $button = $("<div>").addClass(opt.cssClass)
@@ -526,7 +523,7 @@
             }
 
             // When the user drag the map, prevent to move the clicked element instead of dragging the map (behaviour seen with Firefox)
-            self.$map.on("dragstart", function() {
+            self.$map.on("dragstart", function () {
                 return false;
             });
 
@@ -616,7 +613,7 @@
          * @param pageY: mouse client coordinate on Y
          * @return map coordinate {x, y}
          */
-        mapPagePositionToXY: function(pageX, pageY) {
+        mapPagePositionToXY: function (pageX, pageY) {
             var self = this;
             var offset = self.$map.offset();
             var initFactor = (self.options.map.width) ? (self.mapConf.width / self.options.map.width) : (self.mapConf.width / self.$map.width());
@@ -755,7 +752,7 @@
          *      }
          *  }
          */
-        onShowElementsInRange: function(e, opt) {
+        onShowElementsInRange: function (e, opt) {
             var self = this;
 
             // set animDuration to default if not defined
@@ -794,7 +791,7 @@
          * @hiddenOpacity: the opacity when hidden
          * @animDuration: the animation duration
          */
-        showElemByRange: function(ranges, elems, hiddenOpacity, animDuration) {
+        showElemByRange: function (ranges, elems, hiddenOpacity, animDuration) {
             var self = this;
             // Hold the final opacity value for all elements consolidated after applying each ranges
             // This allow to set the opacity only once for each elements
@@ -802,7 +799,7 @@
 
             // set object with one valueIndex to 0 if we have directly the min/max
             if (ranges.min !== undefined || ranges.max !== undefined) {
-                ranges = {0: ranges};
+                ranges = { 0: ranges };
             }
 
             // Loop through each valueIndex
@@ -847,7 +844,7 @@
          * @param opacity the opacity to apply
          * @param animDuration the animation duration to use
          */
-        setElementOpacity: function(elem, opacity, animDuration) {
+        setElementOpacity: function (elem, opacity, animDuration) {
             // Ensure no animation is running
             //elem.mapElem.stop();
             //if (elem.textElem) elem.textElem.stop();
@@ -859,27 +856,27 @@
             }
             if (animDuration > 0) {
                 // Animate attribute
-                elem.mapElem.animate({"opacity": opacity}, animDuration, "linear", function () {
+                elem.mapElem.animate({ "opacity": opacity }, animDuration, "linear", function () {
                     // If final attribute is 0, hide
                     if (opacity === 0) elem.mapElem.hide();
                 });
                 // Handle text element
                 if (elem.textElem) {
                     // Animate attribute
-                    elem.textElem.animate({"opacity": opacity}, animDuration, "linear", function () {
+                    elem.textElem.animate({ "opacity": opacity }, animDuration, "linear", function () {
                         // If final attribute is 0, hide
                         if (opacity === 0) elem.textElem.hide();
                     });
                 }
             } else {
                 // Set attribute
-                elem.mapElem.attr({"opacity": opacity});
+                elem.mapElem.attr({ "opacity": opacity });
                 // For null opacity, hide it
                 if (opacity === 0) elem.mapElem.hide();
                 // Handle text elemen
                 if (elem.textElem) {
                     // Set attribute
-                    elem.textElem.attr({"opacity": opacity});
+                    elem.textElem.attr({ "opacity": opacity });
                     // For null opacity, hide it
                     if (opacity === 0) elem.textElem.hide();
                 }
@@ -904,7 +901,7 @@
         onUpdateEvent: function (e, opt) {
             var self = this;
             // Abort if opt is undefined
-            if (typeof opt !== "object")  return;
+            if (typeof opt !== "object") return;
 
             var i = 0;
             var animDuration = (opt.animDuration) ? opt.animDuration : 0;
@@ -915,11 +912,11 @@
                 // Unset all event handlers
                 self.unsetHover(elem.mapElem, elem.textElem);
                 if (animDuration > 0) {
-                    elem.mapElem.animate({"opacity": 0}, animDuration, "linear", function () {
+                    elem.mapElem.animate({ "opacity": 0 }, animDuration, "linear", function () {
                         elem.mapElem.remove();
                     });
                     if (elem.textElem) {
-                        elem.textElem.animate({"opacity": 0}, animDuration, "linear", function () {
+                        elem.textElem.animate({ "opacity": 0 }, animDuration, "linear", function () {
                             elem.textElem.remove();
                         });
                     }
@@ -935,8 +932,8 @@
             // Used for newPlots and newLinks
             var fnShowElement = function (elem) {
                 // Starts with hidden elements
-                elem.mapElem.attr({opacity: 0});
-                if (elem.textElem) elem.textElem.attr({opacity: 0});
+                elem.mapElem.attr({ opacity: 0 });
+                if (elem.textElem) elem.textElem.attr({ opacity: 0 });
                 // Set final element opacity
                 self.setElementOpacity(
                     elem,
@@ -1042,7 +1039,7 @@
             // Update plots attributes and tooltips
             $.each(self.plots, function (id) {
                 // Avoid updating unchanged elements
-                if ((typeof opt.mapOptions ==="object" &&
+                if ((typeof opt.mapOptions === "object" &&
                     (
                         (typeof opt.mapOptions.map === "object" && typeof opt.mapOptions.map.defaultPlot === "object")
                         || (typeof opt.mapOptions.plots === "object" && typeof opt.mapOptions.plots[id] === "object")
@@ -1069,7 +1066,7 @@
                         if (elemOptions.attrs.transform !== undefined) {
                             elemOptions.attrs.transform = self.plots[id].mapElem.baseTransform + elemOptions.attrs.transform;
                         }
-                    }else { // Default : circle
+                    } else { // Default : circle
                         elemOptions.attrs.r = elemOptions.size / 2;
                     }
 
@@ -1099,10 +1096,10 @@
 
             // Update legends
             if (opt.mapOptions && (
-                    (typeof opt.mapOptions.legend === "object")
-                    || (typeof opt.mapOptions.map === "object" && typeof opt.mapOptions.map.defaultArea === "object")
-                    || (typeof opt.mapOptions.map === "object" && typeof opt.mapOptions.map.defaultPlot === "object")
-                )) {
+                (typeof opt.mapOptions.legend === "object")
+                || (typeof opt.mapOptions.map === "object" && typeof opt.mapOptions.map.defaultArea === "object")
+                || (typeof opt.mapOptions.map === "object" && typeof opt.mapOptions.map.defaultPlot === "object")
+            )) {
                 // Show all elements on the map before updating the legends
                 $("[data-type='elem']", self.$container).each(function (id, elem) {
                     if ($(elem).attr('data-hidden') === "1") {
@@ -1247,7 +1244,7 @@
         /*
          * Check wether newAttrs object bring modifications to originalAttrs object
          */
-        isAttrsChanged: function(originalAttrs, newAttrs) {
+        isAttrsChanged: function (originalAttrs, newAttrs) {
             for (var key in newAttrs) {
                 if (typeof originalAttrs[key] === 'undefined' || newAttrs[key] !== originalAttrs[key]) {
                     return true;
@@ -1276,7 +1273,7 @@
             // Update the label
             if (elem.textElem) {
                 if (elemOptions.text !== undefined && elemOptions.text.content !== undefined && elemOptions.text.content != elem.textElem.attrs.text)
-                    elem.textElem.attr({text: elemOptions.text.content});
+                    elem.textElem.attr({ text: elemOptions.text.content });
 
                 bbox = elem.mapElem.getBBox();
 
@@ -1297,8 +1294,8 @@
                 textPosition = self.getTextPosition(bbox, elemOptions.text.position, elemOptions.text.margin);
                 if (textPosition.x != elem.textElem.attrs.x || textPosition.y != elem.textElem.attrs.y) {
                     if (animDuration > 0) {
-                        elem.textElem.attr({"text-anchor": textPosition.textAnchor});
-                        elem.textElem.animate({x: textPosition.x, y: textPosition.y}, animDuration);
+                        elem.textElem.attr({ "text-anchor": textPosition.textAnchor });
+                        elem.textElem.animate({ x: textPosition.x, y: textPosition.y }, animDuration);
                     } else
                         elem.textElem.attr({
                             x: textPosition.x,
@@ -1326,7 +1323,6 @@
 
             // Update dimensions of SVG plots
             if (elemOptions.type == "svg") {
-
                 if (bbox === undefined) {
                     bbox = elem.mapElem.getBBox();
                 }
@@ -1372,13 +1368,13 @@
             );
 
             if (elemOptions.x !== undefined && elemOptions.y !== undefined)
-                coords = {x: elemOptions.x, y: elemOptions.y};
-            else if (elemOptions.plotsOn !== undefined && self.areas[elemOptions.plotsOn].mapElem !== undefined){
+                coords = { x: elemOptions.x, y: elemOptions.y };
+            else if (elemOptions.plotsOn !== undefined && self.areas[elemOptions.plotsOn].mapElem !== undefined) {
                 var path = self.areas[elemOptions.plotsOn].mapElem;
                 var bbox = path.getBBox();
-                var _x = Math.floor(bbox.x + bbox.width/2.0);
-                var _y = Math.floor(bbox.y + bbox.height/2.0);
-                coords = {x: _x, y: _y};
+                var _x = Math.floor(bbox.x + bbox.width / 2.0);
+                var _y = Math.floor(bbox.y + bbox.height / 2.0);
+                coords = { x: _x, y: _y };
             }
             else
                 coords = self.mapConf.getCoords(elemOptions.latitude, elemOptions.longitude);
@@ -1407,7 +1403,7 @@
                     elemOptions.attrs.transform = "";
                 }
 
-                plot = {"mapElem": self.paper.path(elemOptions.path)};
+                plot = { "mapElem": self.paper.path(elemOptions.path) };
                 plot.mapElem.originalWidth = plot.mapElem.getBBox().width;
                 plot.mapElem.originalHeight = plot.mapElem.getBBox().height;
 
@@ -1415,7 +1411,7 @@
                 elemOptions.attrs.transform = plot.mapElem.baseTransform + elemOptions.attrs.transform;
                 plot.mapElem.attr(elemOptions.attrs);
             } else { // Default = circle
-                plot = {"mapElem": self.paper.circle(coords.x, coords.y, elemOptions.size / 2).attr(elemOptions.attrs)};
+                plot = { "mapElem": self.paper.circle(coords.x, coords.y, elemOptions.size / 2).attr(elemOptions.attrs) };
             }
             self.initElem(plot, elemOptions, id);
             return plot;
@@ -1426,7 +1422,7 @@
          */
         setHref: function (elem) {
             var self = this;
-            elem.attr({cursor: "pointer"});
+            elem.attr({ cursor: "pointer" });
             $(elem.node).on("click." + pluginName, function () {
                 if (!self.panning && elem.href)
                     window.open(elem.href, elem.target);
@@ -1443,10 +1439,7 @@
             var tooltipTO = 0;
             var cssClass = self.$tooltip.attr('class');
 
-
-
             var updateTooltipPosition = function (x, y) {
-
                 var offsetLeft = 10;
                 var offsetTop = 20;
 
@@ -1550,7 +1543,7 @@
 
             $legend = $("." + legendOptions.cssClass, self.$container);
 
-            if (typeof self.createdLegends[legendOptions.cssClass] ==='undefined') {
+            if (typeof self.createdLegends[legendOptions.cssClass] === 'undefined') {
                 self.createdLegends[legendOptions.cssClass] = {
                     container: $legend,
                     initialHTMLContent: $legend.html()
@@ -1561,14 +1554,14 @@
 
             legendPaper = new Raphael($legend.get(0));
             // Set some data to object
-            $(legendPaper.canvas).attr({"data-type": legendType, "data-index": legendIndex});
+            $(legendPaper.canvas).attr({ "data-type": legendType, "data-index": legendIndex });
 
             height = width = 0;
 
             // Set the title of the legend
             if (legendOptions.title && legendOptions.title !== "") {
                 title = legendPaper.text(legendOptions.marginLeftTitle, 0, legendOptions.title).attr(legendOptions.titleAttrs);
-                title.attr({y: 0.5 * title.getBBox().height});
+                title.attr({ y: 0.5 * title.getBBox().height });
 
                 width = legendOptions.marginLeftTitle + title.getBBox().width;
                 height += legendOptions.marginBottomTitle + title.getBBox().height;
@@ -1649,7 +1642,6 @@
                         }
 
                         elem = legendPaper.rect(x, y, scale * (sliceOptions[i].attrs.width), scale * (sliceOptions[i].attrs.height));
-
                     } else if (sliceOptions[i].type == "image" || sliceOptions[i].type == "svg") {
                         if (legendOptions.mode == "horizontal") {
                             x = width + legendOptions.marginLeft;
@@ -1716,14 +1708,14 @@
                         height += legendOptions.marginBottom + elemBBox.height;
                     }
 
-                    $(elem.node).attr({"data-type": "elem", "data-index": i, "data-hidden": 0});
-                    $(label.node).attr({"data-type": "label", "data-index": i, "data-hidden": 0});
+                    $(elem.node).attr({ "data-type": "elem", "data-index": i, "data-hidden": 0 });
+                    $(label.node).attr({ "data-type": "label", "data-index": i, "data-hidden": 0 });
 
                     // Hide map elements when the user clicks on a legend item
                     if (legendOptions.hideElemsOnClick.enabled) {
                         // Hide/show elements when user clicks on a legend element
-                        label.attr({cursor: "pointer"});
-                        elem.attr({cursor: "pointer"});
+                        label.attr({ cursor: "pointer" });
+                        elem.attr({ cursor: "pointer" });
 
                         self.setHoverOptions(elem, sliceOptions[i].attrs, sliceOptions[i].attrs);
                         self.setHoverOptions(label, legendOptions.labelAttrs, legendOptions.labelAttrsHover);
@@ -1763,17 +1755,17 @@
             var hideMapElems = function (e, hideOtherElems, animDuration) {
                 var elemValue = 0;
                 var hidden = $(label.node).attr('data-hidden');
-                var hiddenNewAttr = (hidden === '0') ? {"data-hidden": '1'} : {"data-hidden": '0'};
+                var hiddenNewAttr = (hidden === '0') ? { "data-hidden": '1' } : { "data-hidden": '0' };
 
                 // Check animDuration: if not set, this is a regular click, use the value specified in options
                 if (animDuration === undefined) animDuration = legendOptions.hideElemsOnClick.animDuration;
 
                 if (hidden === '0') {
-                    if (animDuration > 0) label.animate({"opacity": 0.5}, animDuration);
-                    else label.attr({"opacity": 0.5});
+                    if (animDuration > 0) label.animate({ "opacity": 0.5 }, animDuration);
+                    else label.attr({ "opacity": 0.5 });
                 } else {
-                    if (animDuration > 0) label.animate({"opacity": 1}, animDuration);
-                    else label.attr({"opacity": 1});
+                    if (animDuration > 0) label.animate({ "opacity": 1 }, animDuration);
+                    else label.attr({ "opacity": 1 });
                 }
 
                 $.each(elems, function (id) {
@@ -1870,7 +1862,7 @@
             if (Raphael.type != "SVG") delete attrsHover.transform;
             elem.attrsHover = attrsHover;
 
-            if (elem.attrsHover.transform) elem.originalAttrs = $.extend({transform: "s1"}, originalAttrs);
+            if (elem.attrsHover.transform) elem.originalAttrs = $.extend({ transform: "s1" }, originalAttrs);
             else elem.originalAttrs = originalAttrs;
         },
 
@@ -1893,7 +1885,7 @@
             };
             var outBehaviour = function () {
                 clearTimeout(mouseoverTimeout);
-                mouseoutTimeout = setTimeout(function(){
+                mouseoutTimeout = setTimeout(function () {
                     self.elemOut(mapElem, textElem);
                 }, 120);
             };
@@ -1992,41 +1984,41 @@
 
             if (typeof margin === "number") {
                 if (textPosition === "bottom" || textPosition === "top") {
-                    margin = {x: 0, y: margin};
+                    margin = { x: 0, y: margin };
                 } else if (textPosition === "right" || textPosition === "left") {
-                    margin = {x: margin, y: 0};
+                    margin = { x: margin, y: 0 };
                 } else {
-                    margin = {x: 0, y: 0};
+                    margin = { x: 0, y: 0 };
                 }
             }
 
             switch (textPosition) {
-                case "bottom" :
+                case "bottom":
                     textX = ((bbox.x + bbox.x2) / 2) + margin.x;
                     textY = bbox.y2 + margin.y;
                     textAnchor = "middle";
                     break;
-                case "top" :
+                case "top":
                     textX = ((bbox.x + bbox.x2) / 2) + margin.x;
                     textY = bbox.y - margin.y;
                     textAnchor = "middle";
                     break;
-                case "left" :
+                case "left":
                     textX = bbox.x - margin.x;
                     textY = ((bbox.y + bbox.y2) / 2) + margin.y;
                     textAnchor = "end";
                     break;
-                case "right" :
+                case "right":
                     textX = bbox.x2 + margin.x;
                     textY = ((bbox.y + bbox.y2) / 2) + margin.y;
                     textAnchor = "start";
                     break;
-                default : // "inner" position
+                default: // "inner" position
                     textX = ((bbox.x + bbox.x2) / 2) + margin.x;
                     textY = ((bbox.y + bbox.y2) / 2) + margin.y;
                     textAnchor = "middle";
             }
-            return {"x": textX, "y": textY, "textAnchor": textAnchor};
+            return { "x": textX, "y": textY, "textAnchor": textAnchor };
         },
 
         /*
@@ -2039,8 +2031,8 @@
             for (var i = 0, length = legend.slices.length; i < length; ++i) {
                 if ((legend.slices[i].sliceValue !== undefined && value == legend.slices[i].sliceValue)
                     || ((legend.slices[i].sliceValue === undefined)
-                    && (legend.slices[i].min === undefined || value >= legend.slices[i].min)
-                    && (legend.slices[i].max === undefined || value <= legend.slices[i].max))
+                        && (legend.slices[i].min === undefined || value >= legend.slices[i].min)
+                        && (legend.slices[i].max === undefined || value <= legend.slices[i].max))
                 ) {
                     return legend.slices[i];
                 }
@@ -2081,19 +2073,19 @@
             clearInterval(self.animationIntervalID);
 
             self.animationIntervalID = setInterval(function () {
-                    var ratio = currentStep / steps;
-                    self.paper.setViewBox(cx + dx * easingFormula(ratio),
-                        cy + dy * easingFormula(ratio),
-                        cw + dw * easingFormula(ratio),
-                        ch + dh * easingFormula(ratio), false);
-                    if (currentStep++ >= steps) {
-                        clearInterval(self.animationIntervalID);
-                        clearTimeout(self.zoomTO);
-                        self.zoomTO = setTimeout(function () {
-                            self.$map.trigger("afterZoom", {x1: x, y1: y, x2: (x + w), y2: (y + h)});
-                        }, 150);
-                    }
-                }, interval
+                var ratio = currentStep / steps;
+                self.paper.setViewBox(cx + dx * easingFormula(ratio),
+                    cy + dy * easingFormula(ratio),
+                    cw + dw * easingFormula(ratio),
+                    ch + dh * easingFormula(ratio), false);
+                if (currentStep++ >= steps) {
+                    clearInterval(self.animationIntervalID);
+                    clearTimeout(self.zoomTO);
+                    self.zoomTO = setTimeout(function () {
+                        self.$map.trigger("afterZoom", { x1: x, y1: y, x2: (x + w), y2: (y + h) });
+                    }, 150);
+                }
+            }, interval
             );
         },
 
@@ -2105,7 +2097,7 @@
          * Wants to override this behavior? Use prototype overriding:
          *     $.mapael.prototype.isRaphaelBBoxBugPresent = function() {return false;};
          */
-        isRaphaelBBoxBugPresent: function(){
+        isRaphaelBBoxBugPresent: function () {
             var self = this;
             // Draw text, then get its boundaries
             var text_elem = self.paper.text(-50, -50, "TEST");
@@ -2302,7 +2294,6 @@
                 mode: "vertical"
             }
         }
-
     };
 
     // Extend jQuery with Mapael
@@ -2323,5 +2314,4 @@
     };
 
     return Mapael;
-
 }));

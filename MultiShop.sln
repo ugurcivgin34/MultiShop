@@ -53,6 +53,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.WebUI", "Frontends\MultiShop.WebUI\MultiShop.WebUI.csproj", "{6E8FB8DD-3CCA-4557-AF2C-B9CBD5909D42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.DtoLayer", "Frontends\MultiShop.DtoLayer\MultiShop.DtoLayer.csproj", "{A4E8CF33-8B23-483F-86EC-69D4CC279DB8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -115,6 +117,10 @@ Global
 		{6E8FB8DD-3CCA-4557-AF2C-B9CBD5909D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E8FB8DD-3CCA-4557-AF2C-B9CBD5909D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E8FB8DD-3CCA-4557-AF2C-B9CBD5909D42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4E8CF33-8B23-483F-86EC-69D4CC279DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4E8CF33-8B23-483F-86EC-69D4CC279DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4E8CF33-8B23-483F-86EC-69D4CC279DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4E8CF33-8B23-483F-86EC-69D4CC279DB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -142,6 +148,7 @@ Global
 		{F5784039-E3A7-463A-A4BC-DC7D385749F4} = {4BB74E11-8E84-4A29-ADF5-53D1D6FB2558}
 		{B7D8296A-6514-4065-BE6C-496A7FF68488} = {F5784039-E3A7-463A-A4BC-DC7D385749F4}
 		{6E8FB8DD-3CCA-4557-AF2C-B9CBD5909D42} = {AEB6D58A-BB6F-44AC-ABD3-89D2CD40E345}
+		{A4E8CF33-8B23-483F-86EC-69D4CC279DB8} = {AEB6D58A-BB6F-44AC-ABD3-89D2CD40E345}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5A7200B4-0633-495F-9885-6740B1F5E866}

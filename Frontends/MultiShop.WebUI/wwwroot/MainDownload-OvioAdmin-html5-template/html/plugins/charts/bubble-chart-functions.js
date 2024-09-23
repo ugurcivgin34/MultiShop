@@ -2,72 +2,72 @@
 * ================
 * Charts Js
 */
-(function($) {
-  "use strict";
+(function ($) {
+    "use strict";
 
-Highcharts.chart('container18', {
-    chart: {
-        type: 'scatter',
-        zoomType: 'xy'
-    },
-    title: {
-        text: 'Height Versus Weight of 507 Individuals by Gender'
-    },
-    subtitle: {
-        text: 'Source: Heinz  2003'
-    },
-    xAxis: {
-        title: {
-            enabled: true,
-            text: 'Height (cm)'
+    Highcharts.chart('container18', {
+        chart: {
+            type: 'scatter',
+            zoomType: 'xy'
         },
-        startOnTick: true,
-        endOnTick: true,
-        showLastLabel: true
-    },
-    yAxis: {
         title: {
-            text: 'Weight (kg)'
-        }
-    },
-    legend: {
-        layout: 'vertical',
-        align: 'left',
-        verticalAlign: 'top',
-        x: 100,
-        y: 70,
-        floating: true,
-        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
-        borderWidth: 1
-    },
-    plotOptions: {
-        scatter: {
-            marker: {
-                radius: 5,
+            text: 'Height Versus Weight of 507 Individuals by Gender'
+        },
+        subtitle: {
+            text: 'Source: Heinz  2003'
+        },
+        xAxis: {
+            title: {
+                enabled: true,
+                text: 'Height (cm)'
+            },
+            startOnTick: true,
+            endOnTick: true,
+            showLastLabel: true
+        },
+        yAxis: {
+            title: {
+                text: 'Weight (kg)'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            verticalAlign: 'top',
+            x: 100,
+            y: 70,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+            borderWidth: 1
+        },
+        plotOptions: {
+            scatter: {
+                marker: {
+                    radius: 5,
+                    states: {
+                        hover: {
+                            enabled: true,
+                            lineColor: 'rgb(100,100,100)'
+                        }
+                    }
+                },
                 states: {
                     hover: {
-                        enabled: true,
-                        lineColor: 'rgb(100,100,100)'
+                        marker: {
+                            enabled: false
+                        }
                     }
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br>',
+                    pointFormat: '{point.x} cm, {point.y} kg'
                 }
-            },
-            states: {
-                hover: {
-                    marker: {
-                        enabled: false
-                    }
-                }
-            },
-            tooltip: {
-                headerFormat: '<b>{series.name}</b><br>',
-                pointFormat: '{point.x} cm, {point.y} kg'
             }
-        }
-    },
-    series: [{
-        name: 'Female',
-        color: 'rgba(223, 83, 83, .5)',
-        data: [[161.2, 51.6], [167.5, 59.0], [159.5, 49.2], [157.0, 63.0], [155.8, 53.6],
+        },
+        series: [{
+            name: 'Female',
+            color: 'rgba(223, 83, 83, .5)',
+            data: [[161.2, 51.6], [167.5, 59.0], [159.5, 49.2], [157.0, 63.0], [155.8, 53.6],
             [170.0, 59.0], [159.1, 47.6], [166.0, 69.8], [176.2, 66.8], [160.2, 75.2],
             [172.5, 55.2], [170.9, 54.2], [172.9, 62.5], [153.4, 42.0], [160.0, 50.0],
             [147.2, 49.8], [168.2, 49.2], [175.0, 73.2], [157.0, 47.8], [167.6, 68.8],
@@ -119,11 +119,10 @@ Highcharts.chart('container18', {
             [156.2, 60.0], [149.9, 46.8], [169.5, 57.3], [160.0, 64.1], [175.3, 63.6],
             [169.5, 67.3], [160.0, 75.5], [172.7, 68.2], [162.6, 61.4], [157.5, 76.8],
             [176.5, 71.8], [164.4, 55.5], [160.7, 48.6], [174.0, 66.4], [163.8, 67.3]]
-
-    }, {
-        name: 'Male',
-        color: 'rgba(119, 152, 191, .5)',
-        data: [[174.0, 65.6], [175.3, 71.8], [193.5, 80.7], [186.5, 72.6], [187.2, 78.8],
+        }, {
+            name: 'Male',
+            color: 'rgba(119, 152, 191, .5)',
+            data: [[174.0, 65.6], [175.3, 71.8], [193.5, 80.7], [186.5, 72.6], [187.2, 78.8],
             [181.5, 74.8], [184.0, 86.4], [184.5, 78.4], [175.0, 62.0], [184.0, 81.6],
             [180.0, 76.6], [177.8, 83.6], [192.0, 90.0], [176.0, 74.6], [174.0, 71.0],
             [184.0, 79.6], [192.7, 93.8], [171.5, 70.0], [173.0, 72.4], [176.0, 85.9],
@@ -173,198 +172,193 @@ Highcharts.chart('container18', {
             [180.3, 73.2], [167.6, 76.3], [183.0, 65.9], [183.0, 90.9], [179.1, 89.1],
             [170.2, 62.3], [177.8, 82.7], [179.1, 79.1], [190.5, 98.2], [177.8, 84.1],
             [180.3, 83.2], [180.3, 83.2]]
-    }]
-});
-
-Highcharts.chart('container19', {
-
-    chart: {
-        type: 'bubble',
-        plotBorderWidth: 1,
-        zoomType: 'xy'
-    },
-
-    legend: {
-        enabled: false
-    },
-
-    title: {
-        text: 'Sugar and fat intake per country'
-    },
-
-    subtitle: {
-        text: 'Source: <a href="http://www.euromonitor.com/">Euromonitor</a> and <a href="https://data.oecd.org/">OECD</a>'
-    },
-
-    xAxis: {
-        gridLineWidth: 1,
-        title: {
-            text: 'Daily fat intake'
-        },
-        labels: {
-            format: '{value} gr'
-        },
-        plotLines: [{
-            color: 'black',
-            dashStyle: 'dot',
-            width: 2,
-            value: 65,
-            label: {
-                rotation: 0,
-                y: 15,
-                style: {
-                    fontStyle: 'italic'
-                },
-                text: 'Safe fat intake 65g/day'
-            },
-            zIndex: 3
         }]
-    },
+    });
 
-    yAxis: {
-        startOnTick: false,
-        endOnTick: false,
+    Highcharts.chart('container19', {
+        chart: {
+            type: 'bubble',
+            plotBorderWidth: 1,
+            zoomType: 'xy'
+        },
+
+        legend: {
+            enabled: false
+        },
+
         title: {
-            text: 'Daily sugar intake'
+            text: 'Sugar and fat intake per country'
         },
-        labels: {
-            format: '{value} gr'
+
+        subtitle: {
+            text: 'Source: <a href="http://www.euromonitor.com/">Euromonitor</a> and <a href="https://data.oecd.org/">OECD</a>'
         },
-        maxPadding: 0.2,
-        plotLines: [{
-            color: 'black',
-            dashStyle: 'dot',
-            width: 2,
-            value: 50,
-            label: {
-                align: 'right',
-                style: {
-                    fontStyle: 'italic'
-                },
-                text: 'Safe sugar intake 50g/day',
-                x: -10
+
+        xAxis: {
+            gridLineWidth: 1,
+            title: {
+                text: 'Daily fat intake'
             },
-            zIndex: 3
+            labels: {
+                format: '{value} gr'
+            },
+            plotLines: [{
+                color: 'black',
+                dashStyle: 'dot',
+                width: 2,
+                value: 65,
+                label: {
+                    rotation: 0,
+                    y: 15,
+                    style: {
+                        fontStyle: 'italic'
+                    },
+                    text: 'Safe fat intake 65g/day'
+                },
+                zIndex: 3
+            }]
+        },
+
+        yAxis: {
+            startOnTick: false,
+            endOnTick: false,
+            title: {
+                text: 'Daily sugar intake'
+            },
+            labels: {
+                format: '{value} gr'
+            },
+            maxPadding: 0.2,
+            plotLines: [{
+                color: 'black',
+                dashStyle: 'dot',
+                width: 2,
+                value: 50,
+                label: {
+                    align: 'right',
+                    style: {
+                        fontStyle: 'italic'
+                    },
+                    text: 'Safe sugar intake 50g/day',
+                    x: -10
+                },
+                zIndex: 3
+            }]
+        },
+
+        tooltip: {
+            useHTML: true,
+            headerFormat: '<table>',
+            pointFormat: '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
+                '<tr><th>Fat intake:</th><td>{point.x}g</td></tr>' +
+                '<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>' +
+                '<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>',
+            footerFormat: '</table>',
+            followPointer: true
+        },
+
+        plotOptions: {
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+
+        series: [{
+            data: [
+                { x: 95, y: 95, z: 13.8, name: 'BE', country: 'Belgium' },
+                { x: 86.5, y: 102.9, z: 14.7, name: 'DE', country: 'Germany' },
+                { x: 80.8, y: 91.5, z: 15.8, name: 'FI', country: 'Finland' },
+                { x: 80.4, y: 102.5, z: 12, name: 'NL', country: 'Netherlands' },
+                { x: 80.3, y: 86.1, z: 11.8, name: 'SE', country: 'Sweden' },
+                { x: 78.4, y: 70.1, z: 16.6, name: 'ES', country: 'Spain' },
+                { x: 74.2, y: 68.5, z: 14.5, name: 'FR', country: 'France' },
+                { x: 73.5, y: 83.1, z: 10, name: 'NO', country: 'Norway' },
+                { x: 71, y: 93.2, z: 24.7, name: 'UK', country: 'United Kingdom' },
+                { x: 69.2, y: 57.6, z: 10.4, name: 'IT', country: 'Italy' },
+                { x: 68.6, y: 20, z: 16, name: 'RU', country: 'Russia' },
+                { x: 65.5, y: 126.4, z: 35.3, name: 'US', country: 'United States' },
+                { x: 65.4, y: 50.8, z: 28.5, name: 'HU', country: 'Hungary' },
+                { x: 63.4, y: 51.8, z: 15.4, name: 'PT', country: 'Portugal' },
+                { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' }
+            ]
         }]
-    },
+    });
 
-    tooltip: {
-        useHTML: true,
-        headerFormat: '<table>',
-        pointFormat: '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
-            '<tr><th>Fat intake:</th><td>{point.x}g</td></tr>' +
-            '<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>' +
-            '<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>',
-        footerFormat: '</table>',
-        followPointer: true
-    },
+    Highcharts.chart('container20', {
+        chart: {
+            type: 'bubble',
+            plotBorderWidth: 1,
+            zoomType: 'xy'
+        },
 
-    plotOptions: {
-        series: {
-            dataLabels: {
-                enabled: true,
-                format: '{point.name}'
+        title: {
+            text: 'Highcharts bubbles with radial gradient fill'
+        },
+
+        xAxis: {
+            gridLineWidth: 1
+        },
+
+        yAxis: {
+            startOnTick: false,
+            endOnTick: false
+        },
+
+        series: [{
+            data: [
+                [9, 81, 63],
+                [98, 5, 89],
+                [51, 50, 73],
+                [41, 22, 14],
+                [58, 24, 20],
+                [78, 37, 34],
+                [55, 56, 53],
+                [18, 45, 70],
+                [42, 44, 28],
+                [3, 52, 59],
+                [31, 18, 97],
+                [79, 91, 63],
+                [93, 23, 23],
+                [44, 83, 22]
+            ],
+            marker: {
+                fillColor: {
+                    radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                    stops: [
+                        [0, 'rgba(255,255,255,0.5)'],
+                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.5).get('rgba')]
+                    ]
+                }
             }
-        }
-    },
-
-    series: [{
-        data: [
-            { x: 95, y: 95, z: 13.8, name: 'BE', country: 'Belgium' },
-            { x: 86.5, y: 102.9, z: 14.7, name: 'DE', country: 'Germany' },
-            { x: 80.8, y: 91.5, z: 15.8, name: 'FI', country: 'Finland' },
-            { x: 80.4, y: 102.5, z: 12, name: 'NL', country: 'Netherlands' },
-            { x: 80.3, y: 86.1, z: 11.8, name: 'SE', country: 'Sweden' },
-            { x: 78.4, y: 70.1, z: 16.6, name: 'ES', country: 'Spain' },
-            { x: 74.2, y: 68.5, z: 14.5, name: 'FR', country: 'France' },
-            { x: 73.5, y: 83.1, z: 10, name: 'NO', country: 'Norway' },
-            { x: 71, y: 93.2, z: 24.7, name: 'UK', country: 'United Kingdom' },
-            { x: 69.2, y: 57.6, z: 10.4, name: 'IT', country: 'Italy' },
-            { x: 68.6, y: 20, z: 16, name: 'RU', country: 'Russia' },
-            { x: 65.5, y: 126.4, z: 35.3, name: 'US', country: 'United States' },
-            { x: 65.4, y: 50.8, z: 28.5, name: 'HU', country: 'Hungary' },
-            { x: 63.4, y: 51.8, z: 15.4, name: 'PT', country: 'Portugal' },
-            { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' }
-        ]
-    }]
-
-});
-
-Highcharts.chart('container20', {
-
-    chart: {
-        type: 'bubble',
-        plotBorderWidth: 1,
-        zoomType: 'xy'
-    },
-
-    title: {
-        text: 'Highcharts bubbles with radial gradient fill'
-    },
-
-    xAxis: {
-        gridLineWidth: 1
-    },
-
-    yAxis: {
-        startOnTick: false,
-        endOnTick: false
-    },
-
-    series: [{
-        data: [
-            [9, 81, 63],
-            [98, 5, 89],
-            [51, 50, 73],
-            [41, 22, 14],
-            [58, 24, 20],
-            [78, 37, 34],
-            [55, 56, 53],
-            [18, 45, 70],
-            [42, 44, 28],
-            [3, 52, 59],
-            [31, 18, 97],
-            [79, 91, 63],
-            [93, 23, 23],
-            [44, 83, 22]
-        ],
-        marker: {
-            fillColor: {
-                radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
-                stops: [
-                    [0, 'rgba(255,255,255,0.5)'],
-                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.5).get('rgba')]
-                ]
+        }, {
+            data: [
+                [42, 38, 20],
+                [6, 18, 1],
+                [1, 93, 55],
+                [57, 2, 90],
+                [80, 76, 22],
+                [11, 74, 96],
+                [88, 56, 10],
+                [30, 47, 49],
+                [57, 62, 98],
+                [4, 16, 16],
+                [46, 10, 11],
+                [22, 87, 89],
+                [57, 91, 82],
+                [45, 15, 98]
+            ],
+            marker: {
+                fillColor: {
+                    radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                    stops: [
+                        [0, 'rgba(255,255,255,0.5)'],
+                        [1, Highcharts.Color(Highcharts.getOptions().colors[1]).setOpacity(0.5).get('rgba')]
+                    ]
+                }
             }
-        }
-    }, {
-        data: [
-            [42, 38, 20],
-            [6, 18, 1],
-            [1, 93, 55],
-            [57, 2, 90],
-            [80, 76, 22],
-            [11, 74, 96],
-            [88, 56, 10],
-            [30, 47, 49],
-            [57, 62, 98],
-            [4, 16, 16],
-            [46, 10, 11],
-            [22, 87, 89],
-            [57, 91, 82],
-            [45, 15, 98]
-        ],
-        marker: {
-            fillColor: {
-                radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
-                stops: [
-                    [0, 'rgba(255,255,255,0.5)'],
-                    [1, Highcharts.Color(Highcharts.getOptions().colors[1]).setOpacity(0.5).get('rgba')]
-                ]
-            }
-        }
-    }]
-
-});
-
+        }]
+    });
 })(jQuery);
