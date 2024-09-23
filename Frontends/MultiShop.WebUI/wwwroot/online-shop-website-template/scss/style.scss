@@ -27,7 +27,6 @@ $input-placeholder-color: #999999;
 
 @import "bootstrap/scss/bootstrap";
 
-
 /********** Custom CSS ************/
 
 .h1, h2, h3 {
@@ -90,7 +89,7 @@ $input-placeholder-color: #999999;
 }
 
 @media (max-width: 991.98px) {
-    .navbar-dark .navbar-nav .nav-link  {
+    .navbar-dark .navbar-nav .nav-link {
         padding: 5px 0px;
     }
 }
@@ -248,7 +247,7 @@ $input-placeholder-color: #999999;
     transition: .3s .15s;
 }
 
-.product-item .product-img img  {
+.product-item .product-img img {
     transition: .5s;
 }
 
