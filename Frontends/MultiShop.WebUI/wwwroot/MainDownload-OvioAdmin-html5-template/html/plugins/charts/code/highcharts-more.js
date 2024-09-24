@@ -30,7 +30,7 @@
                 }, minorGridLineWidth: 0, minorTickInterval: "auto", minorTickLength: 10, minorTickPosition: "inside", minorTickWidth: 1, tickLength: 10, tickPosition: "inside", tickWidth: 2, title: { rotation: 0 }, zIndex: 2
             }, defaultRadialXOptions: { gridLineWidth: 1, labels: { align: null, distance: 15, x: 0, y: null }, maxPadding: 0, minPadding: 0, showLastLabel: !1, tickLength: 0 }, defaultRadialYOptions: { gridLineInterpolation: "circle", labels: { align: "right", x: -3, y: -2 }, showLastLabel: !1, title: { x: 4, text: null, rotation: 90 } }, setOptions: function (c) {
                 c =
-                this.options = p(this.defaultOptions, this.defaultRadialOptions, c); c.plotBands || (c.plotBands = [])
+                    this.options = p(this.defaultOptions, this.defaultRadialOptions, c); c.plotBands || (c.plotBands = [])
             }, getOffset: function () { k.getOffset.call(this); this.chart.axisOffset[this.side] = 0 }, getLinePath: function (c, b) {
                 c = this.center; var d = this.chart, g = f(b, c[2] / 2 - this.offset); this.isCircular || void 0 !== b ? b = this.chart.renderer.symbols.arc(this.left + c[0], this.top + c[1], g, g, { start: this.startAngleRad, end: this.endAngleRad, open: !0, innerR: 0 }) : (b = this.postTranslate(this.angleRad, g), b = ["M", c[0] + d.plotLeft, c[1] + d.plotTop, "L", b.x,
                     b.y]); return b
@@ -51,8 +51,8 @@
             }, getTitlePosition: function () { var b = this.center, d = this.chart, e = this.options.title; return { x: d.plotLeft + b[0] + (e.x || 0), y: d.plotTop + b[1] - { high: .5, middle: .25, low: 0 }[e.align] * b[2] + (e.y || 0) } }
         }; b(k, "init", function (b, g, a) {
             var c = g.angular, n = g.polar, q = a.isX, k = c && q, h, m = g.options,
-            r = this.pane = g.pane[a.pane || 0], y = r.options; if (c) { if (t(this, k ? d : e), h = !q) this.defaultRadialOptions = this.defaultRadialGaugeOptions } else n && (t(this, e), this.defaultRadialOptions = (h = q) ? this.defaultRadialXOptions : p(this.defaultYAxisOptions, this.defaultRadialYOptions)); c || n ? (this.isRadial = !0, g.inverted = !1, m.chart.zoomType = null) : this.isRadial = !1; h && (r.axis = this); b.call(this, g, a); k || !c && !n || (b = this.options, this.angleRad = (b.angle || 0) * Math.PI / 180, this.startAngleRad = (y.startAngle - 90) * Math.PI / 180, this.endAngleRad =
-                (f(y.endAngle, y.startAngle + 360) - 90) * Math.PI / 180, this.offset = b.offset || 0, this.isCircular = h)
+                r = this.pane = g.pane[a.pane || 0], y = r.options; if (c) { if (t(this, k ? d : e), h = !q) this.defaultRadialOptions = this.defaultRadialGaugeOptions } else n && (t(this, e), this.defaultRadialOptions = (h = q) ? this.defaultRadialXOptions : p(this.defaultYAxisOptions, this.defaultRadialYOptions)); c || n ? (this.isRadial = !0, g.inverted = !1, m.chart.zoomType = null) : this.isRadial = !1; h && (r.axis = this); b.call(this, g, a); k || !c && !n || (b = this.options, this.angleRad = (b.angle || 0) * Math.PI / 180, this.startAngleRad = (y.startAngle - 90) * Math.PI / 180, this.endAngleRad =
+                    (f(y.endAngle, y.startAngle + 360) - 90) * Math.PI / 180, this.offset = b.offset || 0, this.isCircular = h)
         }); b(k, "autoLabelAlign", function (b) { if (!this.isRadial) return b.apply(this, [].slice.call(arguments, 1)) }); b(a, "getPosition", function (b, d, e, a, l) { var c = this.axis; return c.getPosition ? c.getPosition(e) : b.call(this, d, e, a, l) }); b(a, "getLabelPosition", function (b, d, e, a, l, q, k, h, m) {
             var c = this.axis, g = q.y, n = 20, u = q.align, x = (c.translate(this.pos) + c.startAngleRad + Math.PI / 2) / Math.PI * 180 % 360; c.isRadial ? (b = c.getPosition(this.pos,
                 c.center[2] / 2 + f(q.distance, -25)), "auto" === q.rotation ? a.attr({ rotation: x }) : null === g && (g = c.chart.renderer.fontMetrics(a.styles.fontSize).b - a.getBBox().height / 2), null === u && (c.isCircular ? (this.label.getBBox().width > c.len * c.tickInterval / (c.max - c.min) && (n = 0), u = x > n && x < 180 - n ? "left" : x > 180 + n && x < 360 - n ? "right" : "center") : u = "center", a.attr({ align: u })), b.x += q.x, b.y += g) : b = b.call(this, d, e, a, l, q, k, h, m); return b
@@ -89,7 +89,7 @@
             translate: function () {
                 var b = this, d = b.yAxis, a = b.xAxis, k = a.startAngleRad, c, g = b.chart, n = b.xAxis.isRadial, u; h.translate.apply(b); t(b.points, function (e) {
                     var q = e.shapeArgs, l = b.options.minPointLength,
-                    f, h; e.plotHigh = u = d.translate(e.high, 0, 1, 0, 1); e.plotLow = e.plotY; h = u; f = m(e.rectPlotY, e.plotY) - u; Math.abs(f) < l ? (l -= f, f += l, h -= l / 2) : 0 > f && (f *= -1, h -= f); n ? (c = e.barX + k, e.shapeType = "path", e.shapeArgs = { d: b.polarArc(h + f, h, c, c + e.pointWidth) }) : (q.height = f, q.y = h, e.tooltipPos = g.inverted ? [d.len + d.pos - g.plotLeft - h - f / 2, a.len + a.pos - g.plotTop - q.x - q.width / 2, f] : [a.left - g.plotLeft + q.x + q.width / 2, d.pos - g.plotTop + h + f / 2, f])
+                        f, h; e.plotHigh = u = d.translate(e.high, 0, 1, 0, 1); e.plotLow = e.plotY; h = u; f = m(e.rectPlotY, e.plotY) - u; Math.abs(f) < l ? (l -= f, f += l, h -= l / 2) : 0 > f && (f *= -1, h -= f); n ? (c = e.barX + k, e.shapeType = "path", e.shapeArgs = { d: b.polarArc(h + f, h, c, c + e.pointWidth) }) : (q.height = f, q.y = h, e.tooltipPos = g.inverted ? [d.len + d.pos - g.plotLeft - h - f / 2, a.len + a.pos - g.plotTop - q.x - q.width / 2, f] : [a.left - g.plotLeft + q.x + q.width / 2, d.pos - g.plotTop + h + f / 2, f])
                 })
             }, directTouch: !0, trackerGroups: ["group", "dataLabelsGroup"], drawGraph: p, crispCol: h.crispCol, drawPoints: h.drawPoints,
             drawTracker: h.drawTracker, getColumnMetrics: h.getColumnMetrics, animate: function () { return h.animate.apply(this, arguments) }, polarArc: function () { return h.polarArc.apply(this, arguments) }, pointAttribs: h.pointAttribs
@@ -145,27 +145,27 @@
         }, { type: "errorbar", pointArrayMap: ["low", "high"], toYData: function (a) { return [a.low, a.high] }, pointValKey: "high", doQuartiles: !1, drawDataLabels: p.arearange ? function () { var a = this.pointValKey; p.arearange.prototype.drawDataLabels.call(this); r(this.data, function (f) { f.y = f[a] }) } : t, getColumnMetrics: function () { return this.linkedParent && this.linkedParent.columnMetrics || p.column.prototype.getColumnMetrics.call(this) } })
     })(v); (function (a) {
         var r = a.correctFloat, t = a.isNumber, w = a.pick, p = a.Point, m = a.Series,
-        f = a.seriesType, h = a.seriesTypes; f("waterfall", "column", { dataLabels: { inside: !0 }, lineWidth: 1, lineColor: "#333333", dashStyle: "dot", borderColor: "#333333", states: { hover: { lineWidthPlus: 0 } } }, {
-            pointValKey: "y", translate: function () {
-                var b = this.options, a = this.yAxis, e, k, c, g, n, f, l, q, m, p, t = w(b.minPointLength, 5), v = t / 2, y = b.threshold, D = b.stacking, A; h.column.prototype.translate.apply(this); q = m = y; k = this.points; e = 0; for (b = k.length; e < b; e++)c = k[e], l = this.processedYData[e], g = c.shapeArgs, n = D && a.stacks[(this.negStacks && l < y ? "-" :
-                    "") + this.stackKey], A = this.getStackIndicator(A, c.x, this.index), p = n ? n[c.x].points[A.key] : [0, l], c.isSum ? c.y = r(l) : c.isIntermediateSum && (c.y = r(l - m)), f = Math.max(q, q + c.y) + p[0], g.y = a.translate(f, 0, 1, 0, 1), c.isSum ? (g.y = a.translate(p[1], 0, 1, 0, 1), g.height = Math.min(a.translate(p[0], 0, 1, 0, 1), a.len) - g.y) : c.isIntermediateSum ? (g.y = a.translate(p[1], 0, 1, 0, 1), g.height = Math.min(a.translate(m, 0, 1, 0, 1), a.len) - g.y, m = p[1]) : (g.height = 0 < l ? a.translate(q, 0, 1, 0, 1) - g.y : a.translate(q, 0, 1, 0, 1) - a.translate(q - l, 0, 1, 0, 1), q += n && n[c.x] ?
-                        n[c.x].total : l), 0 > g.height && (g.y += g.height, g.height *= -1), c.plotY = g.y = Math.round(g.y) - this.borderWidth % 2 / 2, g.height = Math.max(Math.round(g.height), .001), c.yBottom = g.y + g.height, g.height <= t && !c.isNull ? (g.height = t, g.y -= v, c.plotY = g.y, c.minPointLengthOffset = 0 > c.y ? -v : v) : c.minPointLengthOffset = 0, g = c.plotY + (c.negative ? g.height : 0), this.chart.inverted ? c.tooltipPos[0] = a.len - g : c.tooltipPos[1] = g
-            }, processData: function (b) {
-                var a = this.yData, e = this.options.data, k, c = a.length, g, n, f, l, q, h; n = g = f = l = this.options.threshold ||
-                    0; for (h = 0; h < c; h++)q = a[h], k = e && e[h] ? e[h] : {}, "sum" === q || k.isSum ? a[h] = r(n) : "intermediateSum" === q || k.isIntermediateSum ? a[h] = r(g) : (n += q, g += q), f = Math.min(n, f), l = Math.max(n, l); m.prototype.processData.call(this, b); this.options.stacking || (this.dataMin = f, this.dataMax = l)
-            }, toYData: function (b) { return b.isSum ? 0 === b.x ? null : "sum" : b.isIntermediateSum ? 0 === b.x ? null : "intermediateSum" : b.y }, pointAttribs: function (b, a) {
-                var d = this.options.upColor; d && !b.options.color && (b.color = 0 < b.y ? d : null); b = h.column.prototype.pointAttribs.call(this,
-                    b, a); delete b.dashstyle; return b
-            }, getGraphPath: function () { return ["M", 0, 0] }, getCrispPath: function () { var b = this.data, a = b.length, e = this.graph.strokeWidth() + this.borderWidth, e = Math.round(e) % 2 / 2, f = this.yAxis.reversed, c = [], g, n, u; for (u = 1; u < a; u++) { n = b[u].shapeArgs; g = b[u - 1].shapeArgs; n = ["M", g.x + g.width, g.y + b[u - 1].minPointLengthOffset + e, "L", n.x, g.y + b[u - 1].minPointLengthOffset + e]; if (0 > b[u - 1].y && !f || 0 < b[u - 1].y && f) n[2] += g.height, n[5] += g.height; c = c.concat(n) } return c }, drawGraph: function () {
-                m.prototype.drawGraph.call(this);
-                this.graph.attr({ d: this.getCrispPath() })
-            }, setStackedPoints: function () { var b = this.options, a, e; m.prototype.setStackedPoints.apply(this, arguments); a = this.stackedYData ? this.stackedYData.length : 0; for (e = 1; e < a; e++)b.data[e].isSum || b.data[e].isIntermediateSum || (this.stackedYData[e] += this.stackedYData[e - 1]) }, getExtremes: function () { if (this.options.stacking) return m.prototype.getExtremes.apply(this, arguments) }
-        }, {
-            getClassName: function () {
-                var b = p.prototype.getClassName.call(this); this.isSum ? b += " highcharts-sum" :
-                    this.isIntermediateSum && (b += " highcharts-intermediate-sum"); return b
-            }, isValid: function () { return t(this.y, !0) || this.isSum || this.isIntermediateSum }
-        })
+            f = a.seriesType, h = a.seriesTypes; f("waterfall", "column", { dataLabels: { inside: !0 }, lineWidth: 1, lineColor: "#333333", dashStyle: "dot", borderColor: "#333333", states: { hover: { lineWidthPlus: 0 } } }, {
+                pointValKey: "y", translate: function () {
+                    var b = this.options, a = this.yAxis, e, k, c, g, n, f, l, q, m, p, t = w(b.minPointLength, 5), v = t / 2, y = b.threshold, D = b.stacking, A; h.column.prototype.translate.apply(this); q = m = y; k = this.points; e = 0; for (b = k.length; e < b; e++)c = k[e], l = this.processedYData[e], g = c.shapeArgs, n = D && a.stacks[(this.negStacks && l < y ? "-" :
+                        "") + this.stackKey], A = this.getStackIndicator(A, c.x, this.index), p = n ? n[c.x].points[A.key] : [0, l], c.isSum ? c.y = r(l) : c.isIntermediateSum && (c.y = r(l - m)), f = Math.max(q, q + c.y) + p[0], g.y = a.translate(f, 0, 1, 0, 1), c.isSum ? (g.y = a.translate(p[1], 0, 1, 0, 1), g.height = Math.min(a.translate(p[0], 0, 1, 0, 1), a.len) - g.y) : c.isIntermediateSum ? (g.y = a.translate(p[1], 0, 1, 0, 1), g.height = Math.min(a.translate(m, 0, 1, 0, 1), a.len) - g.y, m = p[1]) : (g.height = 0 < l ? a.translate(q, 0, 1, 0, 1) - g.y : a.translate(q, 0, 1, 0, 1) - a.translate(q - l, 0, 1, 0, 1), q += n && n[c.x] ?
+                            n[c.x].total : l), 0 > g.height && (g.y += g.height, g.height *= -1), c.plotY = g.y = Math.round(g.y) - this.borderWidth % 2 / 2, g.height = Math.max(Math.round(g.height), .001), c.yBottom = g.y + g.height, g.height <= t && !c.isNull ? (g.height = t, g.y -= v, c.plotY = g.y, c.minPointLengthOffset = 0 > c.y ? -v : v) : c.minPointLengthOffset = 0, g = c.plotY + (c.negative ? g.height : 0), this.chart.inverted ? c.tooltipPos[0] = a.len - g : c.tooltipPos[1] = g
+                }, processData: function (b) {
+                    var a = this.yData, e = this.options.data, k, c = a.length, g, n, f, l, q, h; n = g = f = l = this.options.threshold ||
+                        0; for (h = 0; h < c; h++)q = a[h], k = e && e[h] ? e[h] : {}, "sum" === q || k.isSum ? a[h] = r(n) : "intermediateSum" === q || k.isIntermediateSum ? a[h] = r(g) : (n += q, g += q), f = Math.min(n, f), l = Math.max(n, l); m.prototype.processData.call(this, b); this.options.stacking || (this.dataMin = f, this.dataMax = l)
+                }, toYData: function (b) { return b.isSum ? 0 === b.x ? null : "sum" : b.isIntermediateSum ? 0 === b.x ? null : "intermediateSum" : b.y }, pointAttribs: function (b, a) {
+                    var d = this.options.upColor; d && !b.options.color && (b.color = 0 < b.y ? d : null); b = h.column.prototype.pointAttribs.call(this,
+                        b, a); delete b.dashstyle; return b
+                }, getGraphPath: function () { return ["M", 0, 0] }, getCrispPath: function () { var b = this.data, a = b.length, e = this.graph.strokeWidth() + this.borderWidth, e = Math.round(e) % 2 / 2, f = this.yAxis.reversed, c = [], g, n, u; for (u = 1; u < a; u++) { n = b[u].shapeArgs; g = b[u - 1].shapeArgs; n = ["M", g.x + g.width, g.y + b[u - 1].minPointLengthOffset + e, "L", n.x, g.y + b[u - 1].minPointLengthOffset + e]; if (0 > b[u - 1].y && !f || 0 < b[u - 1].y && f) n[2] += g.height, n[5] += g.height; c = c.concat(n) } return c }, drawGraph: function () {
+                    m.prototype.drawGraph.call(this);
+                    this.graph.attr({ d: this.getCrispPath() })
+                }, setStackedPoints: function () { var b = this.options, a, e; m.prototype.setStackedPoints.apply(this, arguments); a = this.stackedYData ? this.stackedYData.length : 0; for (e = 1; e < a; e++)b.data[e].isSum || b.data[e].isIntermediateSum || (this.stackedYData[e] += this.stackedYData[e - 1]) }, getExtremes: function () { if (this.options.stacking) return m.prototype.getExtremes.apply(this, arguments) }
+            }, {
+                getClassName: function () {
+                    var b = p.prototype.getClassName.call(this); this.isSum ? b += " highcharts-sum" :
+                        this.isIntermediateSum && (b += " highcharts-intermediate-sum"); return b
+                }, isValid: function () { return t(this.y, !0) || this.isSum || this.isIntermediateSum }
+            })
     })(v); (function (a) {
         var r = a.Series, t = a.seriesType, v = a.seriesTypes; t("polygon", "scatter", { marker: { enabled: !1, states: { hover: { enabled: !1 } } }, stickyTracking: !1, tooltip: { followPointer: !0, pointFormat: "" }, trackByArea: !0 }, {
             type: "polygon", getGraphPath: function () {
