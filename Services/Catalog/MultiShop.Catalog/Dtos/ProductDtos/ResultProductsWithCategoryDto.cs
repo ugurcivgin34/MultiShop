@@ -1,8 +1,8 @@
-﻿using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
+﻿using MultiShop.Catalog.Dtos.CategoryDtos;
 
-namespace MultiShop.DtoLayer.CatalogDtos.ProductDtos
+namespace MultiShop.Catalog.Dtos.ProductDtos
 {
-    public class ResultProductWithCategoryDto
+    public class ResultProductsWithCategoryDto
     {
         public string ProductId { get; set; }
         public string ProductName { get; set; }
@@ -10,6 +10,6 @@ namespace MultiShop.DtoLayer.CatalogDtos.ProductDtos
         public string ProductImageUrl { get; set; }
         public string ProductDescription { get; set; }
         public string CategoryId { get; set; }
-        public ResultCategoyDto Category { get; set; }
+        public ResultCategoryDto Category { get; set; }
     }
 }
