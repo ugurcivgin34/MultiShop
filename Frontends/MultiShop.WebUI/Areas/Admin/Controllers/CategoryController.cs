@@ -31,7 +31,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var responseData = await responseMessage.Content.ReadAsStringAsync();
-                var categories = JsonConvert.DeserializeObject<List<ResultCategoyDto>>(responseData);
+                var categories = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(responseData);
                 return View(categories);
             }
             return View();

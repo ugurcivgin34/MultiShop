@@ -67,7 +67,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7070/api/Categories");
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultCategoyDto>>(jsonData);
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
             List<SelectListItem> categoryValues = (from x in values
                                                    select new SelectListItem
                                                    {
@@ -115,7 +115,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var client1 = _httpClientFactory.CreateClient();
             var responseMessage1 = await client1.GetAsync("https://localhost:7070/api/Categories");
             var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultCategoyDto>>(jsonData1);
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData1);
             List<SelectListItem> categoryValues1 = (from x in values
                                                     select new SelectListItem
                                                     {
