@@ -20,8 +20,8 @@ namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
             if (responseMessage.IsSuccessStatusCode)
             {
                 var responseData = await responseMessage.Content.ReadAsStringAsync();
-                var categories = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(responseData);
-                return View(categories);
+                var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(responseData);
+                return View(values);
             }
             return View();
         }
