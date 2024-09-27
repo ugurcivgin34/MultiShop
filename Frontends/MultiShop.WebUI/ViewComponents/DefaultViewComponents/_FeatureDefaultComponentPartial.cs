@@ -20,7 +20,7 @@ namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultFeatureDto>>(jsonData);    
+                var values = JsonConvert.DeserializeObject<List<ResultFeatureDto>>(jsonData);
                 return View(values);
             }
             return View();

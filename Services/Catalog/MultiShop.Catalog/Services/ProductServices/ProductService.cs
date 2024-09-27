@@ -19,7 +19,6 @@ namespace MultiShop.Catalog.Services.ProductServices
             _productCollection = database.GetCollection<Product>(_databaseSettings.ProductCollectionName);
             _mapper = mapper;
             _categoryCollection = database.GetCollection<Category>(_databaseSettings.CategoryCollectionName);
-
         }
 
         public async Task CreateProductAsync(CreateProductDto createProductDto)
@@ -50,6 +49,7 @@ namespace MultiShop.Catalog.Services.ProductServices
 
             return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
         }
+
         public async Task<List<ResultProductDto>> GettAllProductAsync()
         {
             var values = await _productCollection.Find(x => true).ToListAsync();

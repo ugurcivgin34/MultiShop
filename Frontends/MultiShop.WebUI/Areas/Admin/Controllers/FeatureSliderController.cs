@@ -78,7 +78,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateFeatureSlider(string id)
         {
-
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkan Görseller";
             ViewBag.v3 = "Slider Öne Çıkan Görsel Listesi";

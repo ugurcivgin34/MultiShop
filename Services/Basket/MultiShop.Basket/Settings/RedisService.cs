@@ -9,7 +9,6 @@ namespace MultiShop.Basket.Settings
     {
         public string _host { get; set; }
         public int _port { get; set; }
-        
 
         private ConnectionMultiplexer _connectionMultiplexer;
 

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.FeatureDtos;
 using MultiShop.Catalog.Services.FeatureServices;
 
@@ -10,6 +9,7 @@ namespace MultiShop.Catalog.Controllers
     public class FeaturesController : ControllerBase
     {
         private readonly IFeatureService _featureService;
+
         public FeaturesController(IFeatureService FeatureService)
         {
             _featureService = FeatureService;
@@ -51,4 +51,3 @@ namespace MultiShop.Catalog.Controllers
         }
     }
 }
-

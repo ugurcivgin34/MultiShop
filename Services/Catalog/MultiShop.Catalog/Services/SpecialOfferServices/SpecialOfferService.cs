@@ -10,6 +10,7 @@ namespace MultiShop.Catalog.Services.SpecialOfferServices
     {
         private readonly IMongoCollection<SpecialOffer> _specialOfferCollection;
         private readonly IMapper _mapper;
+
         public SpecialOfferService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString);
@@ -17,6 +18,7 @@ namespace MultiShop.Catalog.Services.SpecialOfferServices
             _specialOfferCollection = database.GetCollection<SpecialOffer>(_databaseSettings.SpecialOfferCollectionName);
             _mapper = mapper;
         }
+
         public async Task CreateSpecialOfferAsync(CreateSpecialOfferDto createSpecialOfferDto)
         {
             var value = _mapper.Map<SpecialOffer>(createSpecialOfferDto);

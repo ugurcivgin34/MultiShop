@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.FeatureSliderDtos;
 using MultiShop.Catalog.Services.FeatureSliderServices;
@@ -12,6 +11,7 @@ namespace MultiShop.Catalog.Controllers
     public class FeatureSlidersController : ControllerBase
     {
         private readonly IFeatureSliderService _FeatureSliderService;
+
         public FeatureSlidersController(IFeatureSliderService FeatureSliderService)
         {
             _FeatureSliderService = FeatureSliderService;

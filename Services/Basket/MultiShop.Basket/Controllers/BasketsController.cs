@@ -29,6 +29,7 @@ namespace MultiShop.Basket.Controllers
             var values = await _basketService.GetBasket(_loginService.GetUserId);
             return Ok(values);
         }
+
         /// <summary>
         /// Sepetteki değişiklikleri kaydeder.
         /// </summary>

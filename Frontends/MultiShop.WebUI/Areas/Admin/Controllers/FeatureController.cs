@@ -50,7 +50,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = "Öne Çıkan Alan Listesi";
             ViewBag.v0 = "Ana Sayfa Öne Çıkan Alan İşlemleri";
 
-
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createFeatureDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -82,7 +81,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v2 = "Öne Çıkan Alanlar";
             ViewBag.v3 = "Öne Çıkan Alan Listesi";
             ViewBag.v0 = "Ana Sayfa Öne Çıkan Alan İşlemleri";
-
 
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7070/api/Features/" + id);

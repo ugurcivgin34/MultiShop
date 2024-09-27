@@ -10,6 +10,7 @@ namespace MultiShop.Catalog.Services.FeatureServices
     {
         private readonly IMongoCollection<Feature> _featureCollection;
         private readonly IMapper _mapper;
+
         public FeatureService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString);
@@ -17,6 +18,7 @@ namespace MultiShop.Catalog.Services.FeatureServices
             _featureCollection = database.GetCollection<Feature>(_databaseSettings.FeatureCollectionName);
             _mapper = mapper;
         }
+
         public async Task CreateFeatureAsync(CreateFeatureDto createFeatureDto)
         {
             var value = _mapper.Map<Feature>(createFeatureDto);

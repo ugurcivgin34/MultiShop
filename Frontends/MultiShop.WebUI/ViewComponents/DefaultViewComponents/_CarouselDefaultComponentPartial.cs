@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.FeatureSliderDtos;
 using Newtonsoft.Json;
-using System.Text;
 
 namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {
