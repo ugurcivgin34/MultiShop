@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.ProductImageDtos;
-using MultiShop.Catalog.Services.ProductDetailServices;
+using MultiShop.Catalog.Services.ProductImageServices;
 
 namespace MultiShop.Catalog.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductImagesController(IProductImageService _productImageService) : ControllerBase
@@ -41,6 +43,12 @@ namespace MultiShop.Catalog.Controllers
         {
             await _productImageService.UpdateProductImageAsync(updateProductImageDto);
             return Ok("Ürün görselleri başarıyla güncellendi");
+        }
+        [HttpGet("ProductImagesByProductId/{id}")]
+        public async Task<IActionResult> ProductImagesByProductId(string id)
+        {
+            var values = await _productImageService.GetByProductIdProductImageAsync(id);
+            return Ok(values);
         }
     }
 }

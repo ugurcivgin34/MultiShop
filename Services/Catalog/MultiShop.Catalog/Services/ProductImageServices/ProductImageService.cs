@@ -4,7 +4,7 @@ using MultiShop.Catalog.Dtos.ProductImageDtos;
 using MultiShop.Catalog.Entities;
 using MultiShop.Catalog.Settings;
 
-namespace MultiShop.Catalog.Services.ProductDetailServices
+namespace MultiShop.Catalog.Services.ProductImageServices
 {
     public class ProductImageService : IProductImageService
     {
@@ -32,7 +32,7 @@ namespace MultiShop.Catalog.Services.ProductDetailServices
 
         public async Task<GetByIdProductImageDto> GetByIdProductImageAsync(string id)
         {
-            var values = await _ProductImageCollection.Find<ProductImage>(x => x.ProductImageId == id).FirstOrDefaultAsync();
+            var values = await _ProductImageCollection.Find(x => x.ProductImageId == id).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdProductImageDto>(values);
         }
 
@@ -47,5 +47,11 @@ namespace MultiShop.Catalog.Services.ProductDetailServices
             var values = _mapper.Map<ProductImage>(updateProductImageDto);
             await _ProductImageCollection.FindOneAndReplaceAsync(x => x.ProductImageId == updateProductImageDto.ProductImageId, values);
         }
+        public async Task<GetByIdProductImageDto> GetByProductIdProductImageAsync(string id)
+        {
+            var values = await _ProductImageCollection.Find(x => x.ProductId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdProductImageDto>(values);
+        }
+
     }
 }

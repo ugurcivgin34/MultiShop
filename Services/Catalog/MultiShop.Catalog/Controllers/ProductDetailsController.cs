@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.ProductDetailDtos;
-using MultiShop.Catalog.Services.ProductImageServices;
+using MultiShop.Catalog.Services.ProductDetailServices;
 
 namespace MultiShop.Catalog.Controllers
 {
