@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.IdentityServer.Dtos;
 using MultiShop.IdentityServer.Models;
@@ -20,6 +19,7 @@ namespace MultiShop.IdentityServer.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
+
         [HttpPost]
         public async Task<IActionResult> UserLogin(UserLoginDto userLoginDto)
         {
@@ -30,7 +30,7 @@ namespace MultiShop.IdentityServer.Controllers
             {
                 GetCheckAppUserViewModel model = new GetCheckAppUserViewModel();
                 model.Username = userLoginDto.Username;
-                model.Id=user.Id;
+                model.Id = user.Id;
                 var token = JwtTokenGenerator.GenerateToken(model);
                 return Ok(token);
             }

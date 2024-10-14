@@ -6,10 +6,11 @@ using MultiShop.Catalog.Settings;
 
 namespace MultiShop.Catalog.Services.ContactServices
 {
-    public class ContactService:IContactService
+    public class ContactService : IContactService
     {
         private readonly IMongoCollection<Contact> _contactCollection;
         private readonly IMapper _mapper;
+
         public ContactService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString);
@@ -17,6 +18,7 @@ namespace MultiShop.Catalog.Services.ContactServices
             _contactCollection = database.GetCollection<Contact>(_databaseSettings.ContactCollectionName);
             _mapper = mapper;
         }
+
         public async Task CreateContactAsync(CreateContactDto createContactDto)
         {
             var value = _mapper.Map<Contact>(createContactDto);

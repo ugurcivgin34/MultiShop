@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.FeatureSliderDtos;
 using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -12,11 +9,13 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class FeatureSliderController : Controller
     {
         private readonly IFeatureSliderService _featureSliderService;
+
         public FeatureSliderController(IFeatureSliderService featureSliderService)
         {
             _featureSliderService = featureSliderService;
         }
-        void FeatureSliderViewBaglist()
+
+        private void FeatureSliderViewBaglist()
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkan Görseller";
@@ -65,7 +64,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateFeatureSlider(UpdateFeatureSliderDto updateFeatureSliderDto)
         {
-
             await _featureSliderService.UpdateFeatureSliderAsync(updateFeatureSliderDto);
             return RedirectToAction("Index", "FeatureSlider", new { area = "Admin" });
         }

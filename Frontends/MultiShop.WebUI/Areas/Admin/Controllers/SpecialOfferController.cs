@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.SpecialOfferDtos;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -12,19 +10,19 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class SpecialOfferController : Controller
     {
         private readonly ISpecialOfferService _specialOfferService;
+
         public SpecialOfferController(ISpecialOfferService specialOfferService)
         {
             _specialOfferService = specialOfferService;
         }
 
-        void SpecialOfferViewBagList()
+        private void SpecialOfferViewBagList()
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Özel Teklifler";
             ViewBag.v3 = "Özel Teklif ve Günün İndirim Listesi";
             ViewBag.v0 = "Kategori İşlemleri";
         }
-
 
         [AllowAnonymous]
         public async Task<IActionResult> Index()
@@ -48,7 +46,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
         }
 
-
         [Route("{id}")]
         public async Task<IActionResult> DeleteSpecialOffer(string id)
         {
@@ -64,6 +61,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var values = await _specialOfferService.GetByIdSpecialOfferAsync(id);
             return View(values);
         }
+
         [Route("{id}")]
         [HttpPost]
         public async Task<IActionResult> UpdateSpecialOffer(UpdateSpecialOfferDto updateSpecialOfferDto)

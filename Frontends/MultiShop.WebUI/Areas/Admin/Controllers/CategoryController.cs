@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -13,6 +10,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ICategoryService _categoryService;
+
         public CategoryController(IHttpClientFactory httpClientFactory, ICategoryService categoryService)
         {
             _httpClientFactory = httpClientFactory;
@@ -63,7 +61,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             await _categoryService.UpdateCategoryAsync(updateCategoryDto);
             return RedirectToAction("Index", "Category", new { area = "Admin" });
         }
-        void CategoryViewbagList()
+
+        private void CategoryViewbagList()
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Kategoriler";

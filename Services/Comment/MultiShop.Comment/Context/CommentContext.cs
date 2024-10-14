@@ -9,6 +9,7 @@ namespace MultiShop.Comment.Context
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;initial Catalog=MultiShopCommentDb;integrated Security=true;TrustServerCertificate=true");
         }
+
         public DbSet<UserComment> UserComments { get; set; }
     }
 }

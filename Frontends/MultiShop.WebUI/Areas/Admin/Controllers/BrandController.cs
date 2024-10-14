@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.BrandDtos;
 using MultiShop.WebUI.Services.CatalogServices.BrandServices;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -12,18 +10,20 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class BrandController : Controller
     {
         private readonly IBrandService _brandService;
+
         public BrandController(IBrandService brandService)
         {
             _brandService = brandService;
         }
 
-        void BrandViewBagList()
+        private void BrandViewBagList()
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Markalar";
             ViewBag.v3 = "Marka Listesi";
             ViewBag.v0 = "Marka İşlemleri";
         }
+
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
@@ -71,4 +71,3 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
     }
 }
-

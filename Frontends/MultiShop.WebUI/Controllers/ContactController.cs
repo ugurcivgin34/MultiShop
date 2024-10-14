@@ -25,12 +25,12 @@ namespace MultiShop.WebUI.Controllers
             createContactDto.IsRead = false;
             createContactDto.SendDate = DateTime.Now;
             var client = _httpClientFactory.CreateClient();
-            var jsonData= JsonConvert.SerializeObject(createContactDto);
+            var jsonData = JsonConvert.SerializeObject(createContactDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7070/api/Contacts",stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:7070/api/Contacts", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-               return RedirectToAction("Index", "Default");
+                return RedirectToAction("Index", "Default");
             }
             return View();
         }

@@ -8,6 +8,7 @@ namespace MultiShop.WebUI.Controllers
     public class RegisterController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+
         public RegisterController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;

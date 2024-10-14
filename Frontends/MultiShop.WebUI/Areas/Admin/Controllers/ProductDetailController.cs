@@ -12,10 +12,12 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class ProductDetailController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+
         public ProductDetailController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
+
         [Route("{id}")]
         [HttpGet]
         public async Task<IActionResult> UpdateProductDetail(string id)
@@ -34,11 +36,11 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+
         [Route("{id}")]
         [HttpPost]
         public async Task<IActionResult> UpdateProductDetail(UpdateProductDetailDto updateProductDetailDto)
         {
-
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateProductDetailDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");

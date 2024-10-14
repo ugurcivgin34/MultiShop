@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.OfferDiscountDtos;
 using MultiShop.WebUI.Services.CatalogServices.OfferDiscountServices;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -12,11 +10,13 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class OfferDiscountController : Controller
     {
         private readonly IOfferDiscountService _offerDiscountService;
+
         public OfferDiscountController(IOfferDiscountService offerDiscountService)
         {
             _offerDiscountService = offerDiscountService;
         }
-        void OfferDiscountViewBagList()
+
+        private void OfferDiscountViewBagList()
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "İndirim Teklifleri";

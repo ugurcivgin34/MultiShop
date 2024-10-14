@@ -10,6 +10,7 @@ namespace MultiShop.Catalog.Services.BrandServices
     {
         private readonly IMongoCollection<Brand> _brandCollection;
         private readonly IMapper _mapper;
+
         public BrandService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString);
@@ -17,6 +18,7 @@ namespace MultiShop.Catalog.Services.BrandServices
             _brandCollection = database.GetCollection<Brand>(_databaseSettings.BrandCollectionName);
             _mapper = mapper;
         }
+
         public async Task CreateBrandAsync(CreateBrandDto createBrandDto)
         {
             var value = _mapper.Map<Brand>(createBrandDto);

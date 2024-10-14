@@ -9,14 +9,15 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [Area("Admin")]
     [AllowAnonymous]
     [Route("Admin/[controller]/[action]")]
-
     public class CommentController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+
         public CommentController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
+
         public async Task<IActionResult> Index()
         {
             ViewBag.v1 = "Ana Sayfa";
@@ -65,6 +66,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+
         [Route("{id}")]
         [HttpPost]
         public async Task<IActionResult> UpdateComment(UpdateCommentDto updateCommentDto)

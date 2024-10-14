@@ -5,12 +5,13 @@ using MultiShop.Catalog.Services.AboutServices;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [Authorize] 
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AboutsController : ControllerBase
     {
         private readonly IAboutService _aboutService;
+
         public AboutsController(IAboutService AboutService)
         {
             _aboutService = AboutService;

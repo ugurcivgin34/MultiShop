@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.FeatureDtos;
 using MultiShop.WebUI.Services.CatalogServices.FeatureServices;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -12,12 +9,13 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class FeatureController : Controller
     {
         private readonly IFeatureService _featureService;
+
         public FeatureController(IFeatureService featureService)
         {
             _featureService = featureService;
         }
 
-        void FeatureViewBagList()
+        private void FeatureViewBagList()
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Öne Çıkan Alanlar";

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Comment.Context;
 using MultiShop.Comment.Entities;
@@ -12,6 +11,7 @@ namespace MultiShop.Comment.Controllers
     public class CommentsController : ControllerBase
     {
         private readonly CommentContext _context;
+
         public CommentsController(CommentContext context)
         {
             _context = context;

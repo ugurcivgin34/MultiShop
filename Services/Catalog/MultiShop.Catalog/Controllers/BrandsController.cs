@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.BrandDtos;
 using MultiShop.Catalog.Services.BrandServices;
@@ -12,6 +11,7 @@ namespace MultiShop.Catalog.Controllers
     public class BrandsController : ControllerBase
     {
         private readonly IBrandService _brandService;
+
         public BrandsController(IBrandService BrandService)
         {
             _brandService = BrandService;

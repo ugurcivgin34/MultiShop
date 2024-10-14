@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.ContactDtos;
 using MultiShop.Catalog.Services.ContactServices;
@@ -12,6 +11,7 @@ namespace MultiShop.Catalog.Controllers
     public class ContactsController : ControllerBase
     {
         private readonly IContactService _ContactService;
+
         public ContactsController(IContactService ContactService)
         {
             _ContactService = ContactService;

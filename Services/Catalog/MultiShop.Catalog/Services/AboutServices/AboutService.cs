@@ -6,10 +6,11 @@ using MultiShop.Catalog.Settings;
 
 namespace MultiShop.Catalog.Services.AboutServices
 {
-    public class AboutService:IAboutService
+    public class AboutService : IAboutService
     {
         private readonly IMongoCollection<About> _aboutCollection;
         private readonly IMapper _mapper;
+
         public AboutService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString);
@@ -17,6 +18,7 @@ namespace MultiShop.Catalog.Services.AboutServices
             _aboutCollection = database.GetCollection<About>(_databaseSettings.AboutCollectionName);
             _mapper = mapper;
         }
+
         public async Task CreateAboutAsync(CreateAboutDto createAboutDto)
         {
             var value = _mapper.Map<About>(createAboutDto);

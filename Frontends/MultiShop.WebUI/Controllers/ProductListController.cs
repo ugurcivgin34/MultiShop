@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CommentDtos;
 using Newtonsoft.Json;
-using System.Net.Http;
 using System.Text;
 
 namespace MultiShop.WebUI.Controllers
@@ -17,7 +16,10 @@ namespace MultiShop.WebUI.Controllers
 
         public IActionResult Index(string id)
         {
-            ViewBag.i=id;
+            ViewBag.directory1 = "Ana Sayfa";
+            ViewBag.directory2 = "Ürünler";
+            ViewBag.directory3 = "Ürün Listesi";
+            ViewBag.i = id;
             return View();
         }
 
@@ -53,7 +55,6 @@ namespace MultiShop.WebUI.Controllers
                 return RedirectToAction("Index", "Default");
             }
             return View();
-
         }
     }
 }

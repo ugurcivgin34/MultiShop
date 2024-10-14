@@ -8,12 +8,26 @@ namespace MultiShop.Catalog.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductImagesController(IProductImageService _productImageService) : ControllerBase
+    public class ProductImagesController : ControllerBase
     {
+        private readonly IProductImageService _productImageService;
+
+        public ProductImagesController(IProductImageService ProductImageService)
+        {
+            _productImageService = ProductImageService;
+        }
+
         [HttpGet]
         public async Task<IActionResult> ProductImageList()
         {
             var values = await _productImageService.GettAllProductImageAsync();
+            return Ok(values);
+        }
+
+        [HttpGet("ProductImagesByProductId/{id}")]
+        public async Task<IActionResult> ProductImagesByProductId(string id)
+        {
+            var values = await _productImageService.GetByProductIdProductImageAsync(id);
             return Ok(values);
         }
 
@@ -43,12 +57,6 @@ namespace MultiShop.Catalog.Controllers
         {
             await _productImageService.UpdateProductImageAsync(updateProductImageDto);
             return Ok("Ürün görselleri başarıyla güncellendi");
-        }
-        [HttpGet("ProductImagesByProductId/{id}")]
-        public async Task<IActionResult> ProductImagesByProductId(string id)
-        {
-            var values = await _productImageService.GetByProductIdProductImageAsync(id);
-            return Ok(values);
         }
     }
 }
