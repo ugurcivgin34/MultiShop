@@ -144,6 +144,7 @@ builder.Services.AddHttpClient<IOrderOderingService, OrderOderingService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
