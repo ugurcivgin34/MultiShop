@@ -19,5 +19,10 @@
         public object lockoutEnd { get; set; }
         public bool lockoutEnabled { get; set; }
         public int accessFailedCount { get; set; }
+
+
+
+
+
     }
 }
